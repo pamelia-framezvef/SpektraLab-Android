@@ -52,7 +52,8 @@ jobs:
       - name: Apply Android patch
         run: |
           unzip -o spektralab-android-patch.zip \
-            -d upstream/SpektraLab
+            -d upstream/SpektraLab \
+            -x 'engine/CMakeLists.txt'
           test -f upstream/SpektraLab/android/app/src/main/cpp/spektra_jni.cpp
 
       - name: Build APK
