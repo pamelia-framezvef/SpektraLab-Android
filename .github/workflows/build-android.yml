@@ -55,6 +55,13 @@ jobs:
             -d upstream/SpektraLab \
             -x 'engine/CMakeLists.txt'
           test -f upstream/SpektraLab/android/app/src/main/cpp/spektra_jni.cpp
+                - name: Install Vulkan Headers
+        run: |
+          mkdir -p upstream/SpektraLab/build/deps
+          git clone --depth 1 --branch vulkan-sdk-1.4.341.0 \
+            https://github.com/KhronosGroup/Vulkan-Headers.git \
+            upstream/SpektraLab/build/deps/Vulkan-Headers
+          test -f upstream/SpektraLab/build/deps/Vulkan-Headers/include/vulkan/vulkan_core.h
 
       - name: Build APK
         run: |
